@@ -25,3 +25,20 @@ def invmod(a,b):
         l,r=r,l
     #print(ta*l+tb*r)#
     return(l,r)
+
+def rev(a,b):
+    trace=[]
+    l,r=1,0
+    while a!=0:
+        trace.append(b//a)
+        a,b=b%a,a
+    for i in range(len(trace)-2,-1,-1):
+        l,r=r-l*trace[i],l
+    return(l,r)
+
+def testrev(m,n):
+    for i in range(1,m+1):
+        for j in range(1,n+1):
+            t=rev(i,j)
+            if t[0]*i+t[1]*j!=gcd(i,j):
+                print(i,j)
